@@ -148,8 +148,8 @@ test('isNumber()', function () {
 
     // Adding tests for: http://stackoverflow.com/a/1830844/851498
     deepEqual(isNumber(' '), false, 'isNumber(" ") === false');
-    deepEqual(isNumber('\t\t'), false, 'isNumber("\t\t") === false');
-    deepEqual(isNumber('\n\r'), false, 'isNumber("\n\r") === false');
+    deepEqual(isNumber('\t\t'), false, 'isNumber("\\t\\t") === false');
+    deepEqual(isNumber('\n\r'), false, 'isNumber("\\n\\r") === false');
     deepEqual(isNumber(10.10), true, 'isNumber(10.10) === true');
     deepEqual(isNumber(10e5), true, 'isNumber(10e5) === true');
     deepEqual(isNumber(-1), true, 'isNumber(-1) === true');
