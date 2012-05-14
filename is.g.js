@@ -6,7 +6,7 @@
  * which is (c) 2009-2012 Jeremy Ashkenas, DocumentCloud Inc.,
  * and is freely distributable under the MIT license.
  * @author Oleg Sklyanchuk
- * @version 0.1.0
+ * @version 0.2.0
  */
 
 // The root object represents window in the browser,
@@ -144,7 +144,8 @@
      *
      * @example isBoolean(true); // true
      * @example isBoolean(false); // true
-     * @example isBoolean(new Boolean()); // true
+     *
+     * @example isBoolean(new Boolean()); // false
      * @example isBoolean(''); // false
      * @example isBoolean(0); // false
      * @example isBoolean(null); // false
@@ -156,16 +157,25 @@
     root.isBoolean = function (variable) {
         // Note that a variable could be neither TRUE nor FALSE, but still be
         // of Boolean type when invoked as follows: var bool = new Boolean();
-        return variable === true ||
-            variable === false ||
-            toString.call(variable) === '[object Boolean]';
+        return variable === true || variable === false;
     };
 
     /**
      * Determines if a variable is an object.
      *
+     * This library assumes (perhaps wrongly) that an Object is any 
+     * non-primitive value that is also not an Array and not a Function.
+     * Thus, regular expressions, dates, DOM elements, empty boolean values
+     * `new Boolean();`, window, etc., are reported as Objects.
+     *
      * @example isObject({a: 1, b: 2, c: 3}); // true
      * @example isObject(new Date()); // true
+     * @example isObject(new RegExp('abc')); // true
+     * @example isObject(/abc/); // true
+     * @example isObject(window); // true
+     * @example isObject(document.createElement('div')); // true
+     * @example isObject(new Boolean()); // true
+     *
      * @example isObject([1, 2, 3]); // false
      * @example isObject(null); // false
      * @example isObject(undefined); // false
@@ -175,12 +185,14 @@
      */
 
     root.isObject = function (variable) {
-        // Array and Null manifest themselves as Objects in all browsers.
-        // In addition, Undefined is an Object in the Internet Explorer.
         return !root.isUndefined(variable) &&
             !root.isNull(variable) &&
-            !root.isNaN(variable) &&
-            toString.call(variable) === '[object Object]';
+            !root.isString(variable) &&
+            !root.isBoolean(variable) &&
+            !root.isNumber(variable) &&
+            !root.isArray(variable) &&
+            !root.isFunction(variable) &&
+            !root.isNaN(variable);
     };
 
 }(this));

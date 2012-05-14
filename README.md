@@ -17,7 +17,7 @@ I'm pretty sure many of us don't appreciate:
 **is.js** can be used to mitigate type checking inconsistencies until JavaScript
 provides a reliable way to do the same natively.
 
-is.g.js - 0.1.0
+is.g.js - 0.2.0
 -------
 
 Introduces nine very useful, albeit *global*, functions with 
@@ -41,7 +41,20 @@ is.js
 Changelog
 -------
 
-**is.g.js - 0.1.0** - Initial commit.
+###is.g.js - 0.2.0
+
+1. Reworked **isBoolean**:
+   - `isBoolean(new Boolean()); // false`
+2. Reworked **isObject**:
+   1. `isObject(new Boolean()); // true`
+   2. `isObject(new Date()); // true`,
+     
+     `isObject(new RegExp('abc')); // true`
+      
+      This modifications fixes issue: https://github.com/olegskl/is.js/issues/2
+
+###is.g.js - 0.1.0
+Initial commit.
 
 License
 -------
