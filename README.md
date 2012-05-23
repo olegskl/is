@@ -9,7 +9,7 @@ until JavaScript provides a reliable way to do the same natively.
 is.js
 -------
 
-Introduces a global object `is` that provides nine very useful methods with 
+Introduces a global object `is` that provides nine useful methods with 
 self-descriptive usage. Use it if you don't want to pollute the global scope.
 
 1. `is.Array();`
@@ -25,7 +25,7 @@ self-descriptive usage. Use it if you don't want to pollute the global scope.
 is.g.js
 -------
 
-Introduces nine very useful, albeit *global*, functions with self-descriptive
+Introduces nine useful, albeit *global*, functions with self-descriptive
 usage. Use it if you want a more natural way of type checking, and if the
 idea of global scope pollution doesn't look that repulsive to you.
 
@@ -42,7 +42,7 @@ idea of global scope pollution doesn't look that repulsive to you.
 Changelog
 -------
 
-###is.g.js - 0.3.0
+###0.3.0
 
 1. Reworked **isObject** (behaves like Underscore's `_.isObject()`)
    - `isObject(function () {}); // true`
@@ -50,7 +50,7 @@ Changelog
 2. Added **is.js** (implementation of methods is the same as in is.g.js)
 3. Updated the test suite
 
-###is.g.js - 0.2.0
+###0.2.0
 
 1. Reworked **isBoolean**:
    - `isBoolean(new Boolean()); // false`
@@ -62,7 +62,7 @@ Changelog
       
       This modifications fixes issue: https://github.com/olegskl/is.js/issues/2
 
-###is.g.js - 0.1.0
+###0.1.0
 Initial commit.
 
 License
