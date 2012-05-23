@@ -3,25 +3,31 @@ is.js / is.g.js
 
 Type checking made easy.
 
-Why?
+**is.js** and **is.g.js** can be used to mitigate type checking inconsistencies
+until JavaScript provides a reliable way to do the same natively.
+
+is.js
 -------
 
-I'm pretty sure many of us don't appreciate:
+Introduces a global object `is` that provides nine very useful methods with 
+self-descriptive usage. Use it if you don't want to pollute the global scope.
 
-- `typeof null; // 'object'`
-- `typeof []; // 'object'`
-- `isNaN('abc'); // true`
+1. `is.Array();`
+2. `is.Null();`
+3. `is.Undefined();`
+4. `is.Function();`
+5. `is.NaN();`
+6. `is.Number();`
+7. `is.String();`
+8. `is.Boolean();`
+9. `is.Object();`
 
-... and other JavaScript quirks related to type checking.
-
-**is.js** can be used to mitigate type checking inconsistencies until JavaScript
-provides a reliable way to do the same natively.
-
-is.g.js - 0.2.0
+is.g.js
 -------
 
-Introduces nine very useful, albeit *global*, functions with 
-self-descriptive usage:
+Introduces nine very useful, albeit *global*, functions with self-descriptive
+usage. Use it if you want a more natural way of type checking, and if the
+idea of global scope pollution doesn't look that repulsive to you.
 
 1. `isArray();`
 2. `isNull();`
@@ -33,13 +39,16 @@ self-descriptive usage:
 8. `isBoolean();`
 9. `isObject();`
 
-is.js
--------
-
-*... TBD ...*
-
 Changelog
 -------
+
+###is.g.js - 0.3.0
+
+1. Reworked **isObject** (behaves like Underscore's `_.isObject()`)
+   - `isObject(function () {}); // true`
+   - `isObject([1, 2, 3]); // true`
+2. Added **is.js** (implementation of methods is the same as in is.g.js)
+3. Updated the test suite
 
 ###is.g.js - 0.2.0
 
