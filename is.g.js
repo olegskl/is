@@ -1,16 +1,15 @@
 /**
- * @fileOverview
- * This script introduces type checking functions into the global scope.
  * @license MIT license.
- * Portions of is.g.js are inspired or borrowed from Underscore,
- * which is (c) 2009-2012 Jeremy Ashkenas, DocumentCloud Inc.,
- * and is freely distributable under the MIT license.
+ *    Portions of is.g.js are inspired or borrowed from Underscore,
+ *    which is (c) 2009-2012 Jeremy Ashkenas, DocumentCloud Inc.,
+ *    and is freely distributable under the MIT license.
+ * @fileOverview Introduces nine type checking functions into the global scope.
  * @author Oleg Sklyanchuk
- * @version 0.3.0
+ * @version 0.4.0
  */
 
-// The root object represents window in the browser,
-// and global on the server:
+// The root object represents "window" in the browser,
+// and "global" on the server:
 (function (root) {
 
     // ECMAScript 5 strict mode:
@@ -85,7 +84,7 @@
      */
 
     root.isFunction = function (variable) {
-        return toString.call(variable) === '[object Function]';
+        return typeof variable === 'function';
     };
 
     /**
@@ -121,8 +120,9 @@
      */
 
     root.isNumber = function (variable) {
-        return !root.isNaN(variable) &&
-            toString.call(variable) === '[object Number]';
+        // Checking for NaN first, same as is.NaN() implementation:
+        return variable === variable &&
+            typeof variable === 'number';
     };
 
     /**
@@ -137,7 +137,7 @@
      */
 
     root.isString = function (variable) {
-        return toString.call(variable) === '[object String]';
+        return typeof variable === 'string';
     };
 
     /**

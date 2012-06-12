@@ -42,6 +42,14 @@ idea of global scope pollution doesn't look that repulsive to you.
 Changelog
 -------
 
+###0.4.0
+
+Simplified:
+
+1. **isFunction** and **is.Function**,
+2. **isNumber** and **is.Number**,
+3. **isString** and **is.String**
+
 ###0.3.0
 
 1. Reworked **isObject** (behaves like Underscore's `_.isObject()`)
@@ -64,6 +72,11 @@ Changelog
 
 ###0.1.0
 Initial commit.
+
+Tested on
+-------
+
+Chrome, Firefox, Opera, IE 5.55/6/7/8/9
 
 License
 -------
