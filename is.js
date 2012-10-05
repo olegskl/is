@@ -5,7 +5,7 @@
  *    and is freely distributable under the MIT license.
  * @fileOverview Introduces a global object "is" with type checking functions.
  * @author Oleg Sklyanchuk
- * @version 0.4.0
+ * @version 0.5.0
  */
 
 // The root object represents "window" in the browser,
@@ -76,6 +76,26 @@
 
     is.Undefined = function (variable) {
         return variable === void 0;
+    };
+
+    /**
+     * Determines if a variable is NOT undefined.
+     *
+     * This is helpful to avoid mind-bending double negation constructs such as 
+     * if (!is.Undefined(x)) {}
+     *
+     * @example is.Defined(); // false
+     * @example is.Defined(undefined); // false
+     * @example is.Defined(void 0); // false
+     * @example var x; is.Defined(x); // false
+     * @example var x = 1; is.Defined(x); // true
+     *
+     * @param {*} variable A variable to test.
+     * @returns {Boolean} FALSE if the variable is undefined, TRUE otherwise.
+     */
+
+    is.Defined = function (variable) {
+        return variable !== void 0;
     };
 
     /**

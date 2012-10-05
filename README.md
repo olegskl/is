@@ -15,32 +15,40 @@ self-descriptive usage. Use it if you don't want to pollute the global scope.
 1. `is.Array();`
 2. `is.Null();`
 3. `is.Undefined();`
-4. `is.Function();`
-5. `is.NaN();`
-6. `is.Number();`
-7. `is.String();`
-8. `is.Boolean();`
-9. `is.Object();`
+4. `is.Defined();`
+5. `is.Function();`
+6. `is.NaN();`
+7. `is.Number();`
+8. `is.String();`
+9. `is.Boolean();`
+10. `is.Object();`
 
 is.g.js
 -------
 
-Introduces nine useful, albeit *global*, functions with self-descriptive
+Introduces ten useful, albeit *global*, functions with self-descriptive
 usage. Use it if you want a more natural way of type checking, and if the
 idea of global scope pollution doesn't look that repulsive to you.
 
 1. `isArray();`
 2. `isNull();`
 3. `isUndefined();`
-4. `isFunction();`
-5. `isNaN();`
-6. `isNumber();`
-7. `isString();`
-8. `isBoolean();`
-9. `isObject();`
+4. `isDefined();`
+5. `isFunction();`
+6. `isNaN();`
+7. `isNumber();`
+8. `isString();`
+9. `isBoolean();`
+10. `isObject();`
 
 Changelog
 -------
+
+###0.5.0
+
+Introduced **is.Defined** and **isDefined** functions.
+   - `isDefined(undefined); // false`
+   - `isDefined(false); // true`
 
 ###0.4.0
 

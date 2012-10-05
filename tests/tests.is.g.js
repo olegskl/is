@@ -85,6 +85,35 @@ test('isUndefined()', function () {
 
 });
 
+test('isDefined()', function () {
+
+    deepEqual(isDefined(undefined), false, 'isDefined(undefined) === false;');
+    deepEqual(isDefined(void 0), false, 'isDefined(void 0) === false;');
+    deepEqual(isDefined(), false, 'isDefined() === false;');
+
+    deepEqual(isDefined(true), true, 'isDefined(true) === true;');
+    deepEqual(isDefined(false), true, 'isDefined(false) === true;');
+    deepEqual(isDefined(new Boolean()), true, 'isDefined(new Boolean()) === true;');
+    deepEqual(isDefined(null), true, 'isDefined(null) === true;');
+    deepEqual(isDefined([]), true, 'isDefined([]) === true;');
+    deepEqual(isDefined([1, 2, 3]), true, 'isDefined([1, 2, 3]) === true;');
+    deepEqual(isDefined({}), true, 'isDefined({}) === true;');
+    deepEqual(isDefined({a: 1, b: 2}), true, 'isDefined({a: 1, b: 2}) === true;');
+    deepEqual(isDefined(0), true, 'isDefined(0) === true;');
+    deepEqual(isDefined(1), true, 'isDefined(1) === true;');
+    deepEqual(isDefined(NaN), true, 'isDefined(NaN) === true;');
+    deepEqual(isDefined(Math.sqrt(-1)), true, 'isDefined(Math.sqrt(-1)) === true;');
+    deepEqual(isDefined(parseInt('abc')), true, 'isDefined(parseInt("abc")) === true;');
+    deepEqual(isDefined(''), true, 'isDefined("") === true;');
+    deepEqual(isDefined('abc'), true, 'isDefined("abc") === true;');
+    deepEqual(isDefined(function () {}), true, 'isDefined(function () {}) === true;');
+    // Test coverage for issue #2: https://github.com/olegskl/isjs/issues/2
+    deepEqual(isDefined(new Date()), true, 'isDefined(new Date()) === true;');
+    deepEqual(isDefined(new RegExp('abc')), true, 'isDefined(new RegExp("abc")) === true;');
+    deepEqual(isDefined(/abc/), true, 'isDefined(/abc/) === true;');
+
+});
+
 test('isFunction()', function () {
 
     deepEqual(isFunction(function () {}), true, 'isFunction(function () {}) === true;');

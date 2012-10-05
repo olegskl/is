@@ -5,7 +5,7 @@
  *    and is freely distributable under the MIT license.
  * @fileOverview Introduces nine type checking functions into the global scope.
  * @author Oleg Sklyanchuk
- * @version 0.4.0
+ * @version 0.5.0
  */
 
 // The root object represents "window" in the browser,
@@ -69,6 +69,26 @@
 
     root.isUndefined = function (variable) {
         return variable === void 0;
+    };
+
+    /**
+     * Determines if a variable is NOT undefined.
+     *
+     * This is helpful to avoid mind-bending double negation constructs such as 
+     * if (!isUndefined(x)) {}
+     *
+     * @example isDefined(); // false
+     * @example isDefined(undefined); // false
+     * @example isDefined(void 0); // false
+     * @example var x; isDefined(x); // false
+     * @example var x = 1; isDefined(x); // true
+     *
+     * @param {*} variable A variable to test.
+     * @returns {Boolean} FALSE if the variable is undefined, TRUE otherwise.
+     */
+
+    root.isDefined = function (variable) {
+        return variable !== void 0;
     };
 
     /**

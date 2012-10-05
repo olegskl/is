@@ -85,6 +85,35 @@ test('is.Undefined()', function () {
 
 });
 
+test('is.Defined()', function () {
+
+    deepEqual(is.Defined(undefined), false, 'is.Defined(undefined) === false;');
+    deepEqual(is.Defined(void 0), false, 'is.Defined(void 0) === false;');
+    deepEqual(is.Defined(), false, 'is.Defined() === false;');
+
+    deepEqual(is.Defined(true), true, 'is.Defined(true) === true;');
+    deepEqual(is.Defined(false), true, 'is.Defined(false) === true;');
+    deepEqual(is.Defined(new Boolean()), true, 'is.Defined(new Boolean()) === true;');
+    deepEqual(is.Defined(null), true, 'is.Defined(null) === true;');
+    deepEqual(is.Defined([]), true, 'is.Defined([]) === true;');
+    deepEqual(is.Defined([1, 2, 3]), true, 'is.Defined([1, 2, 3]) === true;');
+    deepEqual(is.Defined({}), true, 'is.Defined({}) === true;');
+    deepEqual(is.Defined({a: 1, b: 2}), true, 'is.Defined({a: 1, b: 2}) === true;');
+    deepEqual(is.Defined(0), true, 'is.Defined(0) === true;');
+    deepEqual(is.Defined(1), true, 'is.Defined(1) === true;');
+    deepEqual(is.Defined(NaN), true, 'is.Defined(NaN) === true;');
+    deepEqual(is.Defined(Math.sqrt(-1)), true, 'is.Defined(Math.sqrt(-1)) === true;');
+    deepEqual(is.Defined(parseInt('abc')), true, 'is.Defined(parseInt("abc")) === true;');
+    deepEqual(is.Defined(''), true, 'is.Defined("") === true;');
+    deepEqual(is.Defined('abc'), true, 'is.Defined("abc") === true;');
+    deepEqual(is.Defined(function () {}), true, 'is.Defined(function () {}) === true;');
+    // Test coverage for issue #2: https://github.com/olegskl/is.js/issues/2
+    deepEqual(is.Defined(new Date()), true, 'is.Defined(new Date()) === true;');
+    deepEqual(is.Defined(new RegExp('abc')), true, 'is.Defined(new RegExp("abc")) === true;');
+    deepEqual(is.Defined(/abc/), true, 'is.Defined(/abc/) === true;');
+
+});
+
 test('is.Function()', function () {
 
     deepEqual(is.Function(function () {}), true, 'is.Function(function () {}) === true;');
