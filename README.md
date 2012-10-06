@@ -9,7 +9,7 @@ until JavaScript provides a reliable way to do the same natively.
 is.js
 -------
 
-Introduces a global object `is` that provides nine useful methods with 
+Introduces a global object `is` that provides ten useful methods with 
 self-descriptive usage. Use it if you don't want to pollute the global scope.
 
 1. `is.Array();`
