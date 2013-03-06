@@ -300,4 +300,3 @@ test('is.Object()', function () {
     deepEqual(is.Object(undefined), false, 'is.Object(undefined) === false;');
 
 });
-

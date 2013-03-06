@@ -5,29 +5,16 @@
  *    and is freely distributable under the MIT license.
  * @fileOverview Introduces a global object "is" with type checking functions.
  * @author Oleg Sklyanchuk
- * @version 0.5.0
+ * @version 0.6.0
  */
 
-// The root object represents "window" in the browser,
-// and "global" on the server:
-(function (root) {
+(function (context) {
 
-    // ECMAScript 5 strict mode:
+    // Enable ECMAScript 5 strict mode:
     'use strict';
 
-    /**
-     * A shortcut to Object.prototype.toString method.
-     * @private
-     */
-
-    var toString = Object.prototype.toString;
-
-    /**
-     * A shortcut to the global object "is".
-     * @private
-     */
-
-    var is = root.is = {};
+    var is = {}, // local container for the exported object
+        toString = Object.prototype.toString; // a shortcut to avoid lookup
 
     /**
      * Determines if a variable is an array.
@@ -41,7 +28,6 @@
      * @param {*} variable A variable to test.
      * @returns {Boolean} TRUE if the variable is an array, FALSE otherwise.
      */
-
     is.Array = Array.isArray || function (variable) {
         return toString.call(variable) === '[object Array]';
     };
@@ -56,7 +42,6 @@
      * @param {*} variable A variable to test.
      * @returns {Boolean} TRUE if the variable is null, FALSE otherwise.
      */
-
     is.Null = function (variable) {
         return variable === null;
     };
@@ -73,7 +58,6 @@
      * @param {*} variable A variable to test.
      * @returns {Boolean} TRUE if the variable is undefined, FALSE otherwise.
      */
-
     is.Undefined = function (variable) {
         return variable === void 0;
     };
@@ -93,7 +77,6 @@
      * @param {*} variable A variable to test.
      * @returns {Boolean} FALSE if the variable is undefined, TRUE otherwise.
      */
-
     is.Defined = function (variable) {
         return variable !== void 0;
     };
@@ -109,7 +92,6 @@
      * @param {*} variable A variable to test.
      * @returns {Boolean} TRUE if the variable is a function, FALSE otherwise.
      */
-
     is.Function = function (variable) {
         return typeof variable === 'function';
     };
@@ -127,7 +109,6 @@
      * @param {*} variable A variable to test.
      * @returns {Boolean} TRUE if the variable is NaN, FALSE otherwise.
      */
-
     is.NaN = function (variable) {
         // NaN is the only value for which "===" is not reflexive:
         return variable !== variable;
@@ -145,7 +126,6 @@
      * @param {*} variable A variable to test.
      * @returns {Boolean} TRUE if the variable is a number, FALSE otherwise.
      */
-
     is.Number = function (variable) {
         // Checking for NaN first, same as is.NaN() implementation:
         return variable === variable &&
@@ -162,7 +142,6 @@
      * @param {*} variable A variable to test.
      * @returns {Boolean} TRUE if the variable is a string, FALSE otherwise.
      */
-
     is.String = function (variable) {
         return typeof variable === 'string';
     };
@@ -181,7 +160,6 @@
      * @param {*} variable A variable to test.
      * @returns {Boolean} TRUE if the variable is a boolean, FALSE otherwise.
      */
-
     is.Boolean = function (variable) {
         // Note that a variable could be neither TRUE nor FALSE, but still be
         // of Boolean type when invoked as follows: var bool = new Boolean();
@@ -212,9 +190,14 @@
      * @param {*} variable A variable to test.
      * @returns {Boolean} TRUE if the variable is an object, FALSE otherwise.
      */
-
     is.Object = function (variable) {
         return variable === Object(variable);
     };
+
+    if (is.Object(module) && is.Object(module.exports)) {
+        module.exports = is;
+    } else {
+        context.is = is;
+    }
 
 }(this));

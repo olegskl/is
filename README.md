@@ -1,16 +1,15 @@
-is.js / is.g.js
+is.js
 =====
 
 Type checking made easy.
 
-**is.js** and **is.g.js** can be used to mitigate type checking inconsistencies
-until JavaScript provides a reliable way to do the same natively.
+**is.js** can be used to mitigate type checking inconsistencies until JavaScript provides a reliable way to do the same natively.
 
-is.js
--------
+It is also a very self-descriptif and convenient way to perform type checking.
+The global `is` object is simply an `Object` and thus is easily extensible.
 
-Introduces a global object `is` that provides ten useful methods with 
-self-descriptive usage. Use it if you don't want to pollute the global scope.
+API
+---
 
 1. `is.Array();`
 2. `is.Null();`
@@ -23,30 +22,17 @@ self-descriptive usage. Use it if you don't want to pollute the global scope.
 9. `is.Boolean();`
 10. `is.Object();`
 
-is.g.js
--------
-
-Introduces ten useful, albeit *global*, functions with self-descriptive
-usage. Use it if you want a more natural way of type checking, and if the
-idea of global scope pollution doesn't look that repulsive to you.
-
-1. `isArray();`
-2. `isNull();`
-3. `isUndefined();`
-4. `isDefined();`
-5. `isFunction();`
-6. `isNaN();`
-7. `isNumber();`
-8. `isString();`
-9. `isBoolean();`
-10. `isObject();`
-
 Changelog
 -------
 
+###0.6.0
+
+1. CommonJS support (works in node.js).
+2. Removed **is.g.js**.
+
 ###0.5.0
 
-Introduced **is.Defined** and **isDefined** functions.
+Introduced `is.Defined` and `isDefined` functions.
    - `isDefined(undefined); // false`
    - `isDefined(false); // true`
 
@@ -54,9 +40,9 @@ Introduced **is.Defined** and **isDefined** functions.
 
 Simplified:
 
-1. **isFunction** and **is.Function**,
-2. **isNumber** and **is.Number**,
-3. **isString** and **is.String**
+1. `isFunction` and `is.Function`,
+2. `isNumber` and `is.Number`,
+3. `isString` and `is.String`
 
 ###0.3.0
 
