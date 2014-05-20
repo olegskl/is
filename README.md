@@ -1,5 +1,6 @@
-is.js
-=====
+# is.js
+
+[![Build Status](https://travis-ci.org/olegskl/is.js.svg?branch=master)](https://travis-ci.org/olegskl/is.js)
 
 Type checking made easy.
 
@@ -7,8 +8,7 @@ Type checking made easy.
 
 It is also a very self-descriptif and convenient way to perform type checking. For example, instead of `if (obj && typeof obj === 'object') { ... }` you can write a more intuitive `if (is.object(obj)) { ... }`.
 
-API
----
+## API
 
 1. `is.array();`
 2. `is.null();`
@@ -21,7 +21,6 @@ API
 9. `is.boolean();`
 10. `is.object();`
 
-License
--------
+## License
 
 http://opensource.org/licenses/mit-license.html
