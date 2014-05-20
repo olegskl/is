@@ -5,8 +5,11 @@
  *    and is freely distributable under the MIT license.
  * @fileOverview Introduces a global object "is" with type checking functions.
  * @author Oleg Sklyanchuk
- * @version 0.6.0
+ * @version 0.8.0
  */
+
+// Linting options:
+/*global module */
 
 (function (context) {
 
@@ -17,185 +20,186 @@
         toString = Object.prototype.toString; // a shortcut to avoid lookup
 
     /**
-     * Determines if a variable is an array.
-     * Defaults to native Array.is.Array implementation if it's available.
+     * Determines if a value is an array.
+     * Defaults to native Array.isArray implementation if it's available.
      *
-     * @example is.Array([]); // true
-     * @example is.Array([1, 2, 3]); // true
-     * @example is.Array({a: 1, b: 2, c: 3}); // false
-     * @example is.Array('abc'); // false
+     * @example is.array([]); // true
+     * @example is.array([1, 2, 3]); // true
+     * @example is.array({a: 1, b: 2, c: 3}); // false
+     * @example is.array('abc'); // false
      *
-     * @param {*} variable A variable to test.
-     * @returns {Boolean} TRUE if the variable is an array, FALSE otherwise.
+     * @param {*} value A value to test.
+     * @returns {Boolean} TRUE if the value is an array, FALSE otherwise.
      */
-    is.Array = Array.isArray || function (variable) {
-        return toString.call(variable) === '[object Array]';
+    is.array = Array.isArray || function (value) {
+        return toString.call(value) === '[object Array]';
     };
 
     /**
-     * Determines if a variable is null.
+     * Determines if a value is null.
      *
-     * @example is.Null(null); // true
-     * @example is.Null(false); // false
-     * @example is.Null(undefined); // false
+     * @example is.null(null); // true
+     * @example is.null(false); // false
+     * @example is.null(undefined); // false
      *
-     * @param {*} variable A variable to test.
-     * @returns {Boolean} TRUE if the variable is null, FALSE otherwise.
+     * @param {*} value A value to test.
+     * @returns {Boolean} TRUE if the value is null, FALSE otherwise.
      */
-    is.Null = function (variable) {
-        return variable === null;
+    is.null = function (value) {
+        return value === null;
     };
 
     /**
-     * Determines if a variable is undefined.
+     * Determines if a value is undefined.
      *
-     * @example is.Undefined(); // true
-     * @example is.Undefined(undefined); // true
-     * @example is.Undefined(void 0); // true
-     * @example var x; is.Undefined(x); // true
-     * @example var x = 1; is.Undefined(x); // false
+     * @example is.undefined(); // true
+     * @example is.undefined(undefined); // true
+     * @example is.undefined(void 0); // true
+     * @example var x; is.undefined(x); // true
+     * @example var x = 1; is.undefined(x); // false
      *
-     * @param {*} variable A variable to test.
-     * @returns {Boolean} TRUE if the variable is undefined, FALSE otherwise.
+     * @param {*} value A value to test.
+     * @returns {Boolean} TRUE if the value is undefined, FALSE otherwise.
      */
-    is.Undefined = function (variable) {
-        return variable === void 0;
+    is.undefined = function (value) {
+        return value === void 0;
     };
 
     /**
-     * Determines if a variable is NOT undefined.
+     * Determines if a value is NOT undefined.
      *
      * This is helpful to avoid mind-bending double negation constructs such as 
-     * if (!is.Undefined(x)) {}
+     * if (!is.undefined(x)) {}
      *
-     * @example is.Defined(); // false
-     * @example is.Defined(undefined); // false
-     * @example is.Defined(void 0); // false
-     * @example var x; is.Defined(x); // false
-     * @example var x = 1; is.Defined(x); // true
+     * @example is.defined(); // false
+     * @example is.defined(undefined); // false
+     * @example is.defined(void 0); // false
+     * @example var x; is.defined(x); // false
+     * @example var x = 1; is.defined(x); // true
      *
-     * @param {*} variable A variable to test.
-     * @returns {Boolean} FALSE if the variable is undefined, TRUE otherwise.
+     * @param {*} value A value to test.
+     * @returns {Boolean} FALSE if the value is undefined, TRUE otherwise.
      */
-    is.Defined = function (variable) {
-        return variable !== void 0;
+    is.defined = function (value) {
+        return value !== void 0;
     };
 
     /**
-     * Determines if a variable is a function.
+     * Determines if a value is a function.
      *
-     * @example is.Function(function () {}); // true
-     * @example is.Function({foo: 'bar'}); // false
-     * @example is.Function(Date); // true (Date is a Function)
-     * @example is.Function(new Date()); // false (new Date(); returns Object)
+     * @example is.function(function () {}); // true
+     * @example is.function({foo: 'bar'}); // false
+     * @example is.function(Date); // true (Date is a function)
+     * @example is.function(new Date()); // false (new Date(); returns Object)
      *
-     * @param {*} variable A variable to test.
-     * @returns {Boolean} TRUE if the variable is a function, FALSE otherwise.
+     * @param {*} value A value to test.
+     * @returns {Boolean} TRUE if the value is a function, FALSE otherwise.
      */
-    is.Function = function (variable) {
-        return typeof variable === 'function';
+    is.function = function (value) {
+        return typeof value === 'function';
     };
 
     /**
-     * Determines if a variable is NaN.
+     * Determines if a value is NaN.
      * Overrides the native is.NaN implementation due to its inconsistencies.
      *
-     * @example is.NaN(NaN); // true
-     * @example is.NaN(Math.sqrt(-1)); // true
-     * @example is.NaN(parseInt('abc')); // true
-     * @example is.NaN(0); // false
-     * @example is.NaN('abc'); // false
+     * @example is.nan(NaN); // true
+     * @example is.nan(Math.sqrt(-1)); // true
+     * @example is.nan(parseInt('abc')); // true
+     * @example is.nan(0); // false
+     * @example is.nan('abc'); // false
      *
-     * @param {*} variable A variable to test.
-     * @returns {Boolean} TRUE if the variable is NaN, FALSE otherwise.
+     * @param {*} value A value to test.
+     * @returns {Boolean} TRUE if the value is NaN, FALSE otherwise.
      */
-    is.NaN = function (variable) {
+    is.nan = function (value) {
         // NaN is the only value for which "===" is not reflexive:
-        return variable !== variable;
+        return value !== value;
     };
 
     /**
-     * Determines if a variable is a number (NaN rejected as non-number).
+     * Determines if a value is a number
+     * NaN accepted, compliant with underscore.
      *
-     * @example is.Number(12); // true
-     * @example is.Number('12'); // false
-     * @example is.Number(NaN); // false (NaN rejected)
-     * @example is.Number(Math.sqrt(-1)); // false (NaN rejected)
-     * @example is.Number(parseInt('abc')); // false (NaN rejected)
+     * @example is.number(12); // true
+     * @example is.number('12'); // false
+     * @example is.number(NaN); // true (NaN accepted)
+     * @example is.number(Math.sqrt(-1)); // true (NaN accepted)
+     * @example is.number(parseInt('abc')); // true (NaN accepted)
      *
-     * @param {*} variable A variable to test.
-     * @returns {Boolean} TRUE if the variable is a number, FALSE otherwise.
+     * @param {*} value A value to test.
+     * @returns {Boolean} TRUE if the value is a number, FALSE otherwise.
      */
-    is.Number = function (variable) {
+    is.number = function (value) {
         // Checking for NaN first, same as is.NaN() implementation:
-        return variable === variable &&
-            typeof variable === 'number';
+        return typeof value === 'number';
     };
 
     /**
-     * Determines if a variable is a string.
+     * Determines if a value is a string.
      *
-     * @example is.String('abc'); // true
-     * @example is.String(''); // true
-     * @example is.String(123); // false
+     * @example is.string('abc'); // true
+     * @example is.string(''); // true
+     * @example is.string(123); // false
      *
-     * @param {*} variable A variable to test.
-     * @returns {Boolean} TRUE if the variable is a string, FALSE otherwise.
+     * @param {*} value A value to test.
+     * @returns {Boolean} TRUE if the value is a string, FALSE otherwise.
      */
-    is.String = function (variable) {
-        return typeof variable === 'string';
+    is.string = function (value) {
+        return typeof value === 'string';
     };
 
     /**
-     * Determines if a variable is boolean.
+     * Determines if a value is boolean.
+     * (non-compliant with underscore in regard to new Boolean())
      *
-     * @example is.Boolean(true); // true
-     * @example is.Boolean(false); // true
+     * @example is.boolean(true); // true
+     * @example is.boolean(false); // true
      *
-     * @example is.Boolean(new Boolean()); // false
-     * @example is.Boolean(''); // false
-     * @example is.Boolean(0); // false
-     * @example is.Boolean(null); // false
+     * @example is.boolean(new Boolean()); // false
+     * @example is.boolean(''); // false
+     * @example is.boolean(0); // false
+     * @example is.boolean(null); // false
      *
-     * @param {*} variable A variable to test.
-     * @returns {Boolean} TRUE if the variable is a boolean, FALSE otherwise.
+     * @param {*} value A value to test.
+     * @returns {Boolean} TRUE if the value is a boolean, FALSE otherwise.
      */
-    is.Boolean = function (variable) {
-        // Note that a variable could be neither TRUE nor FALSE, but still be
+    is.boolean = function (value) {
+        // Note that a value could be neither TRUE nor FALSE, but still be
         // of Boolean type when invoked as follows: var bool = new Boolean();
         // is.js rejects booleans created in this way because they are not
         // true booleans, meaning that they do not evaluate to TRUE or FALSE.
-        return variable === true || variable === false;
+        return value === true || value === false;
     };
 
     /**
-     * Determines if a variable is an object.
+     * Determines if a value is an object.
      *
      * Functions, arrays, regular expressions, dates, DOM elements, empty
      * boolean values, `new Boolean();`, window, etc., are reported as Objects.
      *
-     * @example is.Object(function () {}); // true
-     * @example is.Object([1, 2, 3]); // true
-     * @example is.Object({a: 1, b: 2, c: 3}); // true
-     * @example is.Object(new Date()); // true
-     * @example is.Object(new RegExp('abc')); // true
-     * @example is.Object(/abc/); // true
-     * @example is.Object(window); // true
-     * @example is.Object(document.createElement('div')); // true
-     * @example is.Object(new Boolean()); // true
+     * @example is.object(function () {}); // true
+     * @example is.object([1, 2, 3]); // true
+     * @example is.object({a: 1, b: 2, c: 3}); // true
+     * @example is.object(new Date()); // true
+     * @example is.object(new RegExp('abc')); // true
+     * @example is.object(/abc/); // true
+     * @example is.object(window); // true
+     * @example is.object(document.createElement('div')); // true
+     * @example is.object(new Boolean()); // true
      *
-     * @example is.Object(null); // false
-     * @example is.Object(undefined); // false
+     * @example is.object(null); // false
+     * @example is.object(undefined); // false
      *
-     * @param {*} variable A variable to test.
-     * @returns {Boolean} TRUE if the variable is an object, FALSE otherwise.
+     * @param {*} value A value to test.
+     * @returns {Boolean} TRUE if the value is an object, FALSE otherwise.
      */
-    is.Object = function (variable) {
-        return variable === Object(variable);
+    is.object = function (value) {
+        return value === Object(value);
     };
 
-    if (is.Object(module) && is.Object(module.exports)) {
-        module.exports = is;
+    if (is.object(module) && is.object(module.exports)) {
+        module.exports = is; // CommonJS
     } else {
         context.is = is;
     }

@@ -1,0 +1,31 @@
+{
+    "name": "is.js",
+    "version": "0.8.0",
+    "main": "is.js",
+    "description": "Type checking made easy.",
+    "keywords": [
+        "type checking", "underscore.js fork"
+    ],
+    "author": {
+        "name": "Oleg Sklyanchuk",
+        "email": "sklyanchuk@gmail.com",
+        "url": "oregu.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/olegskl/is.js.git"
+    },
+    "bugs": "http://github.com/olegskl/is.js/issues",
+    "devDependencies": {
+        "jshint": "*",
+        "mocha": "*",
+        "chai": "*"
+    },
+    "engines": {
+        "node": "*"
+    },
+    "scripts": {
+        "test": "jshint is.js && mocha -R spec"
+    },
+    "license": "MIT"
+}
