@@ -1,5 +1,5 @@
 {
-    "name": "is.js",
+    "name": "is",
     "version": "0.8.0",
     "main": "is.js",
     "description": "Type checking made easy.",
@@ -13,9 +13,9 @@
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/olegskl/is.js.git"
+        "url": "git://github.com/olegskl/is.git"
     },
-    "bugs": "http://github.com/olegskl/is.js/issues",
+    "bugs": "http://github.com/olegskl/is/issues",
     "devDependencies": {
         "jshint": "*",
         "mocha": "*",
