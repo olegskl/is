@@ -1,7 +1,7 @@
 # is.js
 
-[![Build Status](https://travis-ci.org/olegskl/is.js.svg?branch=master)](https://travis-ci.org/olegskl/is.js)
-[![Code Climate](https://codeclimate.com/github/olegskl/is.js.png)](https://codeclimate.com/github/olegskl/is.js)
+[![Build Status](https://travis-ci.org/olegskl/is.svg?branch=master)](https://travis-ci.org/olegskl/is)
+[![Code Climate](https://codeclimate.com/github/olegskl/is.png)](https://codeclimate.com/github/olegskl/is)
 
 Type checking made easy.
 
