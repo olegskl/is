@@ -22,7 +22,7 @@ you can write a more intuitive:
 or in package.json as a dependency:
 
     "dependencies": {
-        "walk": "git://github.com/olegskl/is.git"
+        "is": "git://github.com/olegskl/is.git"
     }
 
 ## API
