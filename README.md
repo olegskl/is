@@ -7,11 +7,17 @@ Type checking made easy.
 
 **is.js** can be used to mitigate type checking inconsistencies until JavaScript provides a reliable way to do the same natively.
 
-It is also a very self-descriptif and convenient way to perform type checking. For example, instead of `if (obj && typeof obj === 'object') { ... }` you can write a more intuitive `if (is.object(obj)) { ... }`.
+It is quite self-descriptif and convenient. For example, instead of:
+
+    if (obj && typeof obj === 'object') { ... }
+
+you can write a more intuitive:
+
+    if (is.object(obj)) { ... }
 
 ## Installation
 
-    `npm install git://github.com/olegskl/is.git`
+    npm install git://github.com/olegskl/is.git
 
 or in package.json as a dependency:
 
@@ -31,6 +37,12 @@ or in package.json as a dependency:
 8. `is.string();`
 9. `is.boolean();`
 10. `is.object();`
+
+## Similar projects
+
+- http://underscorejs.org
+- http://lodash.com
+- https://github.com/enricomarino/is
 
 ## License
 
