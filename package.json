@@ -22,8 +22,9 @@
         "chai": "*"
     },
     "testling": {
-       "files": "test/*.js",
-       "browsers": [
+        "harness": "mocha-bdd",
+        "files": "test/*.js",
+        "browsers": [
             "ie/6..latest",
             "chrome/22..latest",
             "firefox/16..latest",
@@ -32,7 +33,7 @@
             "iphone/6",
             "ipad/6",
             "android-browser/latest"
-       ]
+        ]
      },
     "engines": {
         "node": "*"
