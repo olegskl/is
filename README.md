@@ -13,7 +13,7 @@ It is also a very self-descriptif and convenient way to perform type checking. F
 
     `npm install git://github.com/olegskl/is.git`
 
-    or in package.json as a dependency:
+or in package.json as a dependency:
 
     "dependencies": {
         "walk": "git://github.com/olegskl/is.git"
