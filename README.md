@@ -3,6 +3,9 @@
 [![Build Status](https://travis-ci.org/olegskl/is.svg?branch=master)](https://travis-ci.org/olegskl/is)
 [![Code Climate](https://codeclimate.com/github/olegskl/is.png)](https://codeclimate.com/github/olegskl/is)
 
+[![browser support](https://ci.testling.com/olegskl/is.png)
+](https://ci.testling.com/olegskl/is)
+
 Type checking made easy.
 
 **is.js** can be used to mitigate type checking inconsistencies until JavaScript provides a reliable way to do the same natively.
