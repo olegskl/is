@@ -9,6 +9,16 @@ Type checking made easy.
 
 It is also a very self-descriptif and convenient way to perform type checking. For example, instead of `if (obj && typeof obj === 'object') { ... }` you can write a more intuitive `if (is.object(obj)) { ... }`.
 
+## Installation
+
+    `npm install git://github.com/olegskl/is.git`
+
+    or in package.json as a dependency:
+
+    "dependencies": {
+        "walk": "git://github.com/olegskl/is.git"
+    }
+
 ## API
 
 1. `is.array();`
