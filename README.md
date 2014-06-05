@@ -46,6 +46,7 @@ or in package.json as a dependency:
 - http://underscorejs.org
 - http://lodash.com
 - https://github.com/enricomarino/is
+- https://github.com/scottrabin/is-js
 
 ## License
 
